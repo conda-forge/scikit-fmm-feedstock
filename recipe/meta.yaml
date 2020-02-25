@@ -28,6 +28,8 @@ requirements:
 test:
   imports:
     - skfmm
+  commands:
+    - pip check
 
 about:
   home: https://github.com/scikit-fmm/scikit-fmm
