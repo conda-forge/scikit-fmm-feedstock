@@ -23,6 +23,7 @@ requirements:
     - numpy
   run:
     - python
+    - pip
     - {{ pin_compatible('numpy') }}
 
 test:
