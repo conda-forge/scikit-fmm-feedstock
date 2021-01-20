@@ -1,5 +1,5 @@
 {% set name = "scikit-fmm" %}
-{% set version = "2019.1.30" %}
+{% set version = "2021.1.20" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: eb64b6d8e30b8df8f8636d5fc4fd7ca6a9b05938ccd62518c80c1d9e823069dd
+  sha256: 3040f91e7b016c30bf7feb2180ab16a36e96ad2d0e1044f224d6284017946935
 
 build:
-  number: 3
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -37,7 +37,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  summary: 'scikit-fmm is a Python extension module which implements the fast marching method.'
+  summary: scikit-fmm is a Python extension module which implements the fast marching method.
 
   description: |
     scikit-fmm is a Python extension module which implements the fast marching method.
