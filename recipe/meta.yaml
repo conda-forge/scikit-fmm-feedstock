@@ -1,5 +1,5 @@
 {% set name = "scikit-fmm" %}
-{% set version = "2021.1.20" %}
+{% set version = "2021.1.21" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3040f91e7b016c30bf7feb2180ab16a36e96ad2d0e1044f224d6284017946935
+  sha256: 969e2ef66b452074f7fa0fa801a7eb839e4e9ff14e9019e245841dc5dfb556d6
 
 build:
   number: 0
