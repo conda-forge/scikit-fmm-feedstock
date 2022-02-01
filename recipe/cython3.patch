@@ -1,26 +1,12 @@
-From 1d7c19e92499281dd02199475c5954aca422d3d3 Mon Sep 17 00:00:00 2001
-From: Jason Furtney <jkfurtney@gmail.com>
-Date: Tue, 1 Feb 2022 12:54:30 -0600
-Subject: [PATCH] regenerate binary min heap cython wrapper with a newer
- version of cython and update the devnotes
+From 9eeafd8c4a9b06c2e762e1d1a38eac406fef1662 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Tue, 1 Feb 2022 13:03:40 -0700
+Subject: [PATCH] Add files via upload
 
 ---
- dev_notes.org   |    2 +-
  skfmm/pheap.cpp | 3832 ++++++++++++++++++++++++++++++++---------------
- 2 files changed, 2636 insertions(+), 1198 deletions(-)
+ 1 file changed, 2635 insertions(+), 1197 deletions(-)
 
-diff --git a/dev_notes.org b/dev_notes.org
-index 560b0e3..3e21bee 100644
---- a/dev_notes.org
-+++ b/dev_notes.org
-@@ -53,6 +53,6 @@ created by Cython are checked into the git repo. If changes are made
- to skfmm/heap.h or skfmm/heap.cpp the Cython c++ file pheap.cpp needs
- to be updated. This is done with the command:
- 
--$ cython --cplus pheap.pyx
-+$ cython3 --cplus -3 pheap.pyx
- 
- The updates pheap.cpp should also be checked into the git repo
 diff --git a/skfmm/pheap.cpp b/skfmm/pheap.cpp
 index 250deb9..8dc1f41 100644
 --- a/skfmm/pheap.cpp
