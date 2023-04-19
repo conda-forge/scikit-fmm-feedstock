@@ -10,13 +10,15 @@ source:
   sha256: d7871c47f820772aba92f25651ef14e4d27de8ce393c0ae3c02ab3c6e2423c0b
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - python
+    - numpy
   host:
     - python
     - pip
