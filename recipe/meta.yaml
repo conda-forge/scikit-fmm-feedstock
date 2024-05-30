@@ -8,7 +8,7 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: b32ec9e5429786e2f92bccebde506e95431e9303650457c2f02d95ce0b954d41
-    patches:
+  patches:
     - numpyheader.patch
 
 build:
@@ -32,6 +32,7 @@ requirements:
   run:
     - python
     - pip
+    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
