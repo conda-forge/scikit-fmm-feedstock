@@ -20,6 +20,7 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - meson-python                           # [build_platform != target_platform]
     - ninja                                  # [build_platform != target_platform]
+    - meson                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
