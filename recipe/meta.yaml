@@ -10,7 +10,7 @@ source:
   sha256: b32ec9e5429786e2f92bccebde506e95431e9303650457c2f02d95ce0b954d41
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -30,7 +30,6 @@ requirements:
   run:
     - python
     - pip
-    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
