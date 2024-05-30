@@ -1,0 +1,23 @@
+From c0e384906a1017c4e49d9da1534a0bddf5230e28 Mon Sep 17 00:00:00 2001
+From: Jason Furtney <jfurtney@itascacg.com>
+Date: Thu, 30 May 2024 13:05:44 -0500
+Subject: [PATCH] change numpy header include
+
+---
+ skfmm/fmm.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/skfmm/fmm.cpp b/skfmm/fmm.cpp
+index 351a51d..5714206 100644
+--- a/skfmm/fmm.cpp
++++ b/skfmm/fmm.cpp
+@@ -2,7 +2,8 @@
+ // implementation of the fast marching method in fast_marching.cpp
+ 
+ #include "Python.h"
+-#include "numpy/noprefix.h"
++#include "numpy/ndarraytypes.h"
++#include "numpy/ufuncobject.h"
+ 
+ #include "distance_marcher.h"
+ #include "travel_time_marcher.h"
