@@ -1,42 +1,50 @@
 {% set name = "scikit-fmm" %}
-{% set version = "2019.1.30" %}
+{% set version = "2024.5.29" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: eb64b6d8e30b8df8f8636d5fc4fd7ca6a9b05938ccd62518c80c1d9e823069dd
-  patches:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: b32ec9e5429786e2f92bccebde506e95431e9303650457c2f02d95ce0b954d41
+    patches:
     - numpyheader.patch
 
 build:
   number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - ninja                                  # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
     - pip
     - numpy
+    - meson-python
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - pip
 
 test:
   imports:
     - skfmm
+  commands:
+    - pip check
 
 about:
   home: https://github.com/scikit-fmm/scikit-fmm
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  summary: 'scikit-fmm is a Python extension module which implements the fast marching method.'
+  summary: scikit-fmm is a Python extension module which implements the fast marching method.
 
   description: |
     scikit-fmm is a Python extension module which implements the fast marching method.
