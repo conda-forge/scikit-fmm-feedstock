@@ -10,7 +10,7 @@ source:
   sha256: aba86ab5e5efeb4d221fbc6908a1e044b909612a72f6121ffd09e5b1823e8e1e
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -27,12 +27,13 @@ requirements:
     - pip
     - numpy
     - meson-python
+    - python-build
   run:
     - python
-    - pip
-    - {{ pin_compatible('numpy') }}
 
 test:
+  requires:
+    - pip
   imports:
     - skfmm
   commands:
@@ -54,3 +55,4 @@ about:
 extra:
   recipe-maintainers:
     - jan-janssen
+    - xylar
