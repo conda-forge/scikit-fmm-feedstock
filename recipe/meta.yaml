@@ -38,6 +38,7 @@ test:
     - skfmm
   commands:
     - pip check
+    - test $(pip list | grep "scikit-fmm " | wc -l) -eq 1  # [unix]
 
 about:
   home: https://github.com/scikit-fmm/scikit-fmm
