@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: aba86ab5e5efeb4d221fbc6908a1e044b909612a72f6121ffd09e5b1823e8e1e
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -27,16 +27,18 @@ requirements:
     - pip
     - numpy
     - meson-python
+    - python-build
   run:
     - python
-    - pip
-    - {{ pin_compatible('numpy') }}
 
 test:
+  requires:
+    - pip
   imports:
     - skfmm
   commands:
     - pip check
+    - test $(pip list | grep "scikit-fmm " | wc -l) -eq 1  # [unix]
 
 about:
   home: https://github.com/scikit-fmm/scikit-fmm
@@ -54,3 +56,4 @@ about:
 extra:
   recipe-maintainers:
     - jan-janssen
+    - xylar
