@@ -1,0 +1,69 @@
+schema_version: 1
+
+context:
+  name: scikit-fmm
+  version: "2025.6.23"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: a3208f5f3881e40b7878d1121ba39b8d57f1bc38fb4e5f0d9d1c66a9b007e44f
+
+build:
+  number: 2
+  skip: match(python, "<=3.9")
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - if: build_platform != target_platform
+      then: numpy
+    - if: build_platform != target_platform
+      then: ninja
+    - if: build_platform != target_platform
+      then: meson-python
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+  host:
+    - python
+    - pip
+    - numpy
+    - meson-python
+    - python-build
+  run:
+    - python
+
+tests:
+  - python:
+      imports:
+        - skfmm
+      pip_check: true
+  - requirements:
+      run:
+        - pip
+    script:
+      - if: unix
+        then: test $(pip list | grep "scikit-fmm " | wc -l) -eq 1
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE.txt
+  summary: scikit-fmm is a Python extension module which implements the fast marching method.
+  description: |
+    scikit-fmm is a Python extension module which implements the fast marching method.
+    Signed distance functions, Travel time transforms (solutions to the Eikonal equation), Extension velocities
+  homepage: https://github.com/scikit-fmm/scikit-fmm
+  repository: https://github.com/scikit-fmm/scikit-fmm
+  documentation: https://scikit-fmm.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
+    - xylar
