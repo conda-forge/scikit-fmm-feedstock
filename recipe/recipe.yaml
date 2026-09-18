@@ -13,21 +13,18 @@ source:
   sha256: a3208f5f3881e40b7878d1121ba39b8d57f1bc38fb4e5f0d9d1c66a9b007e44f
 
 build:
-  number: 2
+  number: 3
   skip: match(python, "<=3.9")
 
 requirements:
   build:
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
-    - if: build_platform != target_platform
-      then: numpy
-    - if: build_platform != target_platform
-      then: ninja
-    - if: build_platform != target_platform
-      then: meson-python
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - numpy
+        - ninja
+        - meson-python
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
